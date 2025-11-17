@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🩺 VITTALIZE WEB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>🩺 VITTALIZE WEB - Evaluador de Salud</h1>
+    <p class="subtitle">Ingresa los datos, genera una evaluación y revisa tu historial reciente.</p>
+
+    <form id="evaluacionForm">
+        <div class="grid">
+        <div class="card">
+            <h2>1. Signos Vitales</h2>
+            <label for="fc_lpm">Frecuencia Cardiaca (lpm):</label>
+            <input type="number" id="fc_lpm" value="75" min="20" max="220" step="1" required>
+
+            <label for="fr_rpm">Frecuencia Respiratoria (rpm):</label>
+            <input type="number" id="fr_rpm" value="16" min="4" max="60" step="1" required>
+
+            <label for="temp_c">Temperatura (°C):</label>
+            <input type="number" id="temp_c" value="36.5" min="30" max="43" step="0.1" required>
+
+            <label for="spo2_pct">Saturación O₂ (%):</label>
+            <input type="number" id="spo2_pct" value="98" min="50" max="100" step="1" required>
+
+            <label for="pas_mmhg">Presión Sistólica (mmHg):</label>
+            <input type="number" id="pas_mmhg" value="120" min="50" max="250" step="1" required>
+
+            <label for="peso_kg">Peso (kg):</label>
+            <input type="number" id="peso_kg" value="70" min="10" max="400" step="0.1" required>
+
+            <label for="talla_m">Talla (m):</label>
+            <input type="number" id="talla_m" value="1.70" min="0.5" max="2.5" step="0.01" required>
+        </div>
+
+        <div class="card">
+            <h2>2. Síntomas</h2>
+
+            <label>
+                <input type="checkbox" id="fiebre_escalofrios"> ¿Tiene fiebre o escalofríos?
+            </label>
+
+            <label>
+                <input type="checkbox" id="dolor_toracico"> ¿Dolor en el pecho?
+            </label>
+            
+            <label for="disnea">Dificultad para respirar (Disnea):</label>
+            <select id="disnea" required>
+                <option value="0">No</option>
+                <option value="1">Leve</option>
+                <option value="2">Severa</option>
+            </select>
+
+            <label for="dolor_abdominal">Dolor abdominal:</label>
+            <select id="dolor_abdominal" required>
+                <option value="0">Ninguno</option>
+                <option value="1">Moderado</option>
+                <option value="2">Intenso</option>
+            </select>
+
+            <label>
+                <input type="checkbox" id="cefalea_subita"> ¿Dolor de cabeza intenso de inicio súbito?
+            </label>
+
+            <label>
+                <input type="checkbox" id="palidez_sudoracion"> ¿Palidez con sudoración?
+            </label>
+        </div>
+        </div>
+
+        <button type="submit">Generar Evaluación</button>
+    </form>
+
+    <div id="resultado" class="resultado-area" style="display: none;">
+        <h2>✅ Reporte de Evaluación</h2>
+        <h3 id="nivel-global">Nivel Global: </h3>
+        <ul id="lista-resultados"></ul>
+    </div>
+
+    <div id="historial">
+        <h2>📜 Evaluaciones anteriores</h2>
+        <table>
+            <thead>
+                <tr><th>Fecha</th><th>Nivel</th><th>Detalle</th></tr>
+            </thead>
+            <tbody id="tabla-historial">
+                <tr><td colspan="3">Cargando...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+    </div>
+</body>
+</html>
