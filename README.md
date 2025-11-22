@@ -33,7 +33,7 @@ sudo apt install -y ninja-build
 
 ## Clonar
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/Manum03/vittalize_c-
 cd vittalize_c++
 ```
 
