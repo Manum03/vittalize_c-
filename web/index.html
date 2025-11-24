@@ -1,99 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🩺 VITTALIZE WEB</title>
+    <title>Vittalize Web | Evaluador de Salud</title>
+
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div class="background-decor"></div>
+
     <div class="container">
-    <h1>🩺 VITTALIZE WEB - Evaluador de Salud</h1>
-    <p class="subtitle">Ingresa los datos, genera una evaluación y revisa tu historial reciente.</p>
+        <header class="main-header">
+            <div class="logo-container">
+                <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                <h1>Vittalize<span class="highlight">Web</span></h1>
+            </div>
+            <p class="subtitle">Evaluación de salud inteligente</p>
+        </header>
 
-    <form id="evaluacionForm">
-        <div class="grid">
-        <div class="card">
-            <h2>1. Signos Vitales</h2>
-            <label for="fc_lpm">Frecuencia Cardiaca (lpm):</label>
-            <input type="number" id="fc_lpm" value="75" min="20" max="220" step="1" required>
+        <form id="evaluacionForm" class="animate-fade-in">
+            <div class="grid">
+                <!-- Sección Signos Vitales -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-stethoscope card-icon"></i>
+                        <h2>Signos Vitales</h2>
+                    </div>
 
-            <label for="fr_rpm">Frecuencia Respiratoria (rpm):</label>
-            <input type="number" id="fr_rpm" value="16" min="4" max="60" step="1" required>
+                    <div class="input-group">
+                        <label for="fc_lpm">Frecuencia Cardiaca <span class="unit">(lpm)</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-heart-crack input-icon"></i>
+                            <input type="number" id="fc_lpm" value="75" min="20" max="220" step="1" required
+                                placeholder="Ej: 75">
+                        </div>
+                    </div>
 
-            <label for="temp_c">Temperatura (°C):</label>
-            <input type="number" id="temp_c" value="36.5" min="30" max="43" step="0.1" required>
+                    <div class="input-group">
+                        <label for="fr_rpm">Frecuencia Respiratoria <span class="unit">(rpm)</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lungs input-icon"></i>
+                            <input type="number" id="fr_rpm" value="16" min="4" max="60" step="1" required
+                                placeholder="Ej: 16">
+                        </div>
+                    </div>
 
-            <label for="spo2_pct">Saturación O₂ (%):</label>
-            <input type="number" id="spo2_pct" value="98" min="50" max="100" step="1" required>
+                    <div class="input-group">
+                        <label for="temp_c">Temperatura <span class="unit">(°C)</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-temperature-half input-icon"></i>
+                            <input type="number" id="temp_c" value="36.5" min="30" max="43" step="0.1" required
+                                placeholder="Ej: 36.5">
+                        </div>
+                    </div>
 
-            <label for="pas_mmhg">Presión Sistólica (mmHg):</label>
-            <input type="number" id="pas_mmhg" value="120" min="50" max="250" step="1" required>
+                    <div class="input-group">
+                        <label for="spo2_pct">Saturación O₂ <span class="unit">(%)</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-droplet input-icon"></i>
+                            <input type="number" id="spo2_pct" value="98" min="50" max="100" step="1" required
+                                placeholder="Ej: 98">
+                        </div>
+                    </div>
 
-            <label for="peso_kg">Peso (kg):</label>
-            <input type="number" id="peso_kg" value="70" min="10" max="400" step="0.1" required>
+                    <div class="input-group">
+                        <label for="pas_mmhg">Presión Sistólica <span class="unit">(mmHg)</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-gauge-high input-icon"></i>
+                            <input type="number" id="pas_mmhg" value="120" min="50" max="250" step="1" required
+                                placeholder="Ej: 120">
+                        </div>
+                    </div>
 
-            <label for="talla_m">Talla (m):</label>
-            <input type="number" id="talla_m" value="1.70" min="0.5" max="2.5" step="0.01" required>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="peso_kg">Peso <span class="unit">(kg)</span></label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-weight-scale input-icon"></i>
+                                <input type="number" id="peso_kg" value="70" min="10" max="400" step="0.1" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="talla_m">Talla <span class="unit">(m)</span></label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-ruler-vertical input-icon"></i>
+                                <input type="number" id="talla_m" value="1.70" min="0.5" max="2.5" step="0.01" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección Síntomas -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-user-injured card-icon"></i>
+                        <h2>Síntomas</h2>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="fiebre_escalofrios">
+                            <span class="checkmark"></span>
+                            <span class="label-text">¿Tiene fiebre o escalofríos?</span>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="dolor_toracico">
+                            <span class="checkmark"></span>
+                            <span class="label-text">¿Dolor en el pecho?</span>
+                        </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="disnea">Dificultad para respirar (Disnea)</label>
+                        <div class="select-wrapper">
+                            <select id="disnea" required>
+                                <option value="0">No</option>
+                                <option value="1">Leve</option>
+                                <option value="2">Severa</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="dolor_abdominal">Dolor abdominal</label>
+                        <div class="select-wrapper">
+                            <select id="dolor_abdominal" required>
+                                <option value="0">Ninguno</option>
+                                <option value="1">Moderado</option>
+                                <option value="2">Intenso</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="cefalea_subita">
+                            <span class="checkmark"></span>
+                            <span class="label-text">¿Dolor de cabeza súbito?</span>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="palidez_sudoracion">
+                            <span class="checkmark"></span>
+                            <span class="label-text">¿Palidez con sudoración?</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                <i class="fa-solid fa-bolt"></i> Generar Evaluación
+            </button>
+        </form>
+
+        <div id="resultado" class="resultado-area animate-slide-up" style="display: none;">
+            <div class="result-header">
+                <h2><i class="fa-solid fa-clipboard-check"></i> Reporte de Evaluación</h2>
+                <div id="nivel-global-badge" class="badge"></div>
+            </div>
+            <h3 id="nivel-global" class="hidden"></h3>
+            <!-- Hidden but kept for logic compatibility if needed, though we use badge now -->
+            <ul id="lista-resultados" class="result-list"></ul>
         </div>
 
-        <div class="card">
-            <h2>2. Síntomas</h2>
-
-            <label>
-                <input type="checkbox" id="fiebre_escalofrios"> ¿Tiene fiebre o escalofríos?
-            </label>
-
-            <label>
-                <input type="checkbox" id="dolor_toracico"> ¿Dolor en el pecho?
-            </label>
-            
-            <label for="disnea">Dificultad para respirar (Disnea):</label>
-            <select id="disnea" required>
-                <option value="0">No</option>
-                <option value="1">Leve</option>
-                <option value="2">Severa</option>
-            </select>
-
-            <label for="dolor_abdominal">Dolor abdominal:</label>
-            <select id="dolor_abdominal" required>
-                <option value="0">Ninguno</option>
-                <option value="1">Moderado</option>
-                <option value="2">Intenso</option>
-            </select>
-
-            <label>
-                <input type="checkbox" id="cefalea_subita"> ¿Dolor de cabeza intenso de inicio súbito?
-            </label>
-
-            <label>
-                <input type="checkbox" id="palidez_sudoracion"> ¿Palidez con sudoración?
-            </label>
+        <div id="historial" class="historial-area animate-slide-up">
+            <h2><i class="fa-solid fa-clock-rotate-left"></i> Historial Reciente</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nivel</th>
+                            <th>Detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-historial">
+                        <tr>
+                            <td colspan="3" class="loading-text">Cargando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </div>
-
-        <button type="submit">Generar Evaluación</button>
-    </form>
-
-    <div id="resultado" class="resultado-area" style="display: none;">
-        <h2>✅ Reporte de Evaluación</h2>
-        <h3 id="nivel-global">Nivel Global: </h3>
-        <ul id="lista-resultados"></ul>
-    </div>
-
-    <div id="historial">
-        <h2>📜 Evaluaciones anteriores</h2>
-        <table>
-            <thead>
-                <tr><th>Fecha</th><th>Nivel</th><th>Detalle</th></tr>
-            </thead>
-            <tbody id="tabla-historial">
-                <tr><td colspan="3">Cargando...</td></tr>
-            </tbody>
-        </table>
     </div>
 
     <script src="script.js"></script>
-    </div>
 </body>
+
 </html>

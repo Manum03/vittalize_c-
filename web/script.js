@@ -53,27 +53,41 @@ document.getElementById('evaluacionForm').addEventListener('submit', function(ev
 
 function mostrarResultados(data) {
     const resultadoDiv = document.getElementById('resultado');
-    const nivelGlobalH3 = document.getElementById('nivel-global');
+    const nivelGlobalBadge = document.getElementById('nivel-global-badge');
     const listaUl = document.getElementById('lista-resultados');
 
     // Limpiar resultados anteriores
     listaUl.innerHTML = '';
 
-    // Asignar clase de color al nivel global
+    // Asignar clase de color al nivel global (Badge)
     const nivelClase = 'nivel-' + data.nivel_global.toLowerCase();
-    nivelGlobalH3.className = nivelClase; // Aplica el estilo de color
-    nivelGlobalH3.textContent = `Nivel Global: ${data.nivel_global}`;
+    
+    // Reset classes and add new ones
+    nivelGlobalBadge.className = 'badge'; 
+    nivelGlobalBadge.classList.add(nivelClase);
+    nivelGlobalBadge.textContent = data.nivel_global;
 
     // Listar los resultados detallados
     data.items.forEach(item => {
         const li = document.createElement('li');
         const itemNivelClase = 'nivel-' + item.nivel.toLowerCase();
         
-        li.innerHTML = `<span class="${itemNivelClase}">${item.nombre} (${item.nivel}):</span> ${item.explicacion}`;
+        // Icono basado en el nivel (opcional, simple lógica visual)
+        let icon = '<i class="fa-solid fa-check"></i>';
+        if (item.nivel === 'Alto' || item.nivel === 'Critico') icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
+        else if (item.nivel === 'Moderado') icon = '<i class="fa-solid fa-circle-exclamation"></i>';
+
+        li.innerHTML = `
+            <span class="${itemNivelClase}">${icon} ${item.nombre} (${item.nivel})</span>
+            <div class="detalle">${item.explicacion}</div>
+        `;
         listaUl.appendChild(li);
     });
 
     resultadoDiv.style.display = 'block'; // Mostrar la sección de resultados
+    
+    // Smooth scroll to results
+    resultadoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // --- Historial ---
